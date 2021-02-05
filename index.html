@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        textarea {
+            width: 500px;
+            height: 80px;
+            margin-top: 30px;
+            margin-left: 300px;
+            resize: none;
+            outline: none;
+            border: 4px solid lightgreen;
+        }
+        
+        .content {
+            margin-top: 40px;
+            width: 800px;
+            height: 600px;
+            margin: 30px auto;
+            background: lightgreen;
+            overflow: auto;
+        }
+        
+        ul li {
+            width: 700px;
+            list-style: none;
+            margin-top: 10px;
+            margin-left: 50px;
+            background: hotpink;
+            box-shadow: 3px 3px 2px rgba(0, 0, 0, .3);
+        }
+        
+        a {
+            float: right;
+            margin-right: 10px;
+            text-decoration: none;
+            color: green;
+        }
+        
+        button {
+            width: 100px;
+            height: 50px;
+            background: crimson;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>简易留言板：</h1>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button>发布</button>
+    <div class="content">
+        <ul></ul>
+    </div>
+
+    <script>
+        var btn = document.querySelector('button');
+        var text = document.querySelector('textarea');
+        var ul = document.querySelector('ul');
+        btn.onclick = function() {
+            if (text.value == "") {
+                alert('请输入内容');
+            } else {
+                var li = document.createElement('li');
+                ul.appendChild(li);
+                li.innerHTML = text.value + '<a href="javascript:;">删除</a>';
+
+            }
+
+            var a = document.querySelectorAll('a');
+            for (i = 0; i < a.length; i++) {
+                a[i].onclick = function() {
+                    ul.removeChild(this.parentNode);
+                }
+
+            }
+        }
+    </script>
+</body>
+
+</html>
